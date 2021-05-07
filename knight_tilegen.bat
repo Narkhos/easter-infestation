@@ -1,0 +1,2 @@
+img2gb tileset --name knight_tileset --output-c-file=src/gfx/knight_tileset.c --output-header-file=src/gfx/knight_tileset.h --output-image=obj/gfx/knight.png --deduplicate img/knight.png
+img2gb tilemap --name knight_tilemap --output-c-file=src/gfx/knight_tilemap.c --output-header-file=src/gfx/knight_tilemap.h obj/gfx/knight.png img/knight.png

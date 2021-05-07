@@ -1,0 +1,1 @@
+img2gb tileset --output-c-file=src/font/font.tileset.c --output-header-file=src/font/font.tileset.h --name=FONT_TILESET font/font.png

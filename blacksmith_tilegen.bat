@@ -1,0 +1,2 @@
+img2gb tileset --name blacksmith_tileset --output-c-file=src/gfx/blacksmith_tileset.c --output-header-file=src/gfx/blacksmith_tileset.h --output-image=obj/gfx/blacksmith.png --deduplicate img/blacksmith.png
+img2gb tilemap --name blacksmith_tilemap --output-c-file=src/gfx/blacksmith_tilemap.c --output-header-file=src/gfx/blacksmith_tilemap.h obj/gfx/blacksmith.png img/blacksmith.png

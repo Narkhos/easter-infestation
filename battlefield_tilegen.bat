@@ -1,0 +1,2 @@
+img2gb tileset --name battlefield_tileset --output-c-file=src/gfx/battlefield_tileset.c --output-header-file=src/gfx/battlefield_tileset.h --output-image=obj/gfx/battlefield.png --deduplicate img/battlefield.png
+img2gb tilemap --name battlefield_tilemap --output-c-file=src/gfx/battlefield_tilemap.c --output-header-file=src/gfx/battlefield_tilemap.h obj/gfx/battlefield.png img/battlefield.png

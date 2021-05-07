@@ -1,0 +1,2 @@
+img2gb tileset --name inn_tileset --output-c-file=src/gfx/inn_tileset.c --output-header-file=src/gfx/inn_tileset.h --output-image=obj/gfx/inn.png --deduplicate img/inn.png
+img2gb tilemap --name inn_tilemap --output-c-file=src/gfx/inn_tilemap.c --output-header-file=src/gfx/inn_tilemap.h obj/gfx/inn.png img/inn.png

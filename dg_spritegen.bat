@@ -1,0 +1,1 @@
+img2gb tileset --output-c-file=src/gfx/sprites.c --output-header-file=src/gfx/sprites.h --output-image=obj/gfx/sprites.png --sprite8x16 --name SPRITES img/sprites.png

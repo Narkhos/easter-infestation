@@ -30,3 +30,9 @@ knight_tilegen.bat
 ```
 make.bat
 ```
+
+## Resources and tools
+
+https://videlais.com/2016/07/03/programming-game-boy-games-using-gbdk-part-1-configuring-programming-and-compiling/
+https://blog.flozz.fr/2019/09/18/developpement-gameboy-1bis-re-hello-world/
+https://github.com/SuperDisk/hUGETracker

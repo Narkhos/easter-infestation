@@ -64,12 +64,17 @@ extern unsigned int y; // scroll background y position
 #define BROKEN_EGG_LEFT 20
 #define BROKEN_EGG_RIGHT 21
 
+extern bool egg_visibility[22]; // visibility of each egg
+
 extern const int egg_position[22][2];
 
 extern void drawEggSide(UINT8 egg);
 extern void drawEgg(UINT8 egg);
+extern void drawAllVisibleEggs();
 extern void initEggs();
 extern void hideEggs();
+
+extern void set_all_egg_visibility(bool visibility);
 
 extern void hideBlobs();
 extern void initBlobs();

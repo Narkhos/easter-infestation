@@ -99,8 +99,9 @@ void set_cell_content(int position[2], unsigned int value) {
 
 // DRAW DUNGEON
 void draw_dungeon(unsigned int x, unsigned int y) {
-	HIDE_SPRITES;
-	hideEggs();
+	// HIDE_SPRITES;
+	// hideEggs();
+	set_all_egg_visibility(false);
 
 	int left_side[2];
 	get_cell_position(hero.position, left[hero.direction], 1, left_side);
@@ -138,10 +139,14 @@ void draw_dungeon(unsigned int x, unsigned int y) {
 		if (!(get_cell_content(left_near) & 1)
 			&& !(get_cell_content(front_near) & 1)) {
 			if(content & 8) {
-				drawEgg(EGG_FAR_LEFT_LSIDE);
+				// drawEgg(EGG_FAR_LEFT_LSIDE);
+				egg_visibility[EGG_FAR_LEFT_LSIDE] = true;
+				egg_visibility[EGG_FAR_RIGHT_LSIDE] = true;
 			}
 			if(content & 4) {
-				drawEgg(BROKEN_EGG_FAR_LEFT_LSIDE);
+				// drawEgg(BROKEN_EGG_FAR_LEFT_LSIDE);
+				egg_visibility[BROKEN_EGG_FAR_LEFT_LSIDE] = true;
+				egg_visibility[BROKEN_EGG_FAR_RIGHT_LSIDE] = true;
 			}
 		}
 		if(content & 1) {
@@ -168,10 +173,15 @@ void draw_dungeon(unsigned int x, unsigned int y) {
 		if (!(get_cell_content(right_near) & 1)
 			&& !(get_cell_content(front_near) & 1)) {
 			if(content & 8) {
-				drawEgg(EGG_FAR_LEFT_RSIDE);
+				// drawEgg(EGG_FAR_LEFT_RSIDE);
+				egg_visibility[EGG_FAR_LEFT_RSIDE] = true;
+				egg_visibility[EGG_FAR_RIGHT_RSIDE] = true;
+				
 			}
 			if(content & 4) {
-				drawEgg(BROKEN_EGG_FAR_LEFT_RSIDE);
+				// drawEgg(BROKEN_EGG_FAR_LEFT_RSIDE);
+				egg_visibility[BROKEN_EGG_FAR_LEFT_RSIDE] = true;
+				egg_visibility[BROKEN_EGG_FAR_RIGHT_RSIDE] = true;
 			}
 		}
 
@@ -200,10 +210,14 @@ void draw_dungeon(unsigned int x, unsigned int y) {
 	if(content != ERROR_OUT_OF_BOUND) {
 		if (!(get_cell_content(front_near) & 1)) {
 			if(content & 8) {
-				drawEgg(EGG_FAR_LEFT_MIDDLE);
+				// drawEgg(EGG_FAR_LEFT_MIDDLE);
+				egg_visibility[EGG_FAR_LEFT_MIDDLE] = true;
+				egg_visibility[EGG_FAR_RIGHT_MIDDLE] = true;
 			}
 			if(content & 4) {
-				drawEgg(BROKEN_EGG_FAR_LEFT_MIDDLE);
+				// drawEgg(BROKEN_EGG_FAR_LEFT_MIDDLE);
+				egg_visibility[BROKEN_EGG_FAR_LEFT_MIDDLE] = true;
+				egg_visibility[BROKEN_EGG_FAR_RIGHT_MIDDLE] = true;
 			}
 		}
 
@@ -227,10 +241,12 @@ void draw_dungeon(unsigned int x, unsigned int y) {
 	if(content != ERROR_OUT_OF_BOUND) {
 		if (!(get_cell_content(left_side) & 1)) {
 			if(content & 8) {
-				drawEggSide(EGG_NEAR_RIGHT_LSIDE);
+				// drawEggSide(EGG_NEAR_RIGHT_LSIDE);
+				egg_visibility[EGG_NEAR_RIGHT_LSIDE] = true;
 			}
 			if(content & 4) {
-				drawEggSide(BROKEN_EGG_NEAR_RIGHT_LSIDE);
+				// drawEggSide(BROKEN_EGG_NEAR_RIGHT_LSIDE);
+				egg_visibility[BROKEN_EGG_NEAR_RIGHT_LSIDE] = true;
 			}
 		}
 
@@ -259,10 +275,12 @@ void draw_dungeon(unsigned int x, unsigned int y) {
 	if(content != ERROR_OUT_OF_BOUND) {
 		if (!(get_cell_content(right_side) & 1)) {
 			if(content & 8) {
-				drawEggSide(EGG_NEAR_LEFT_RSIDE);
+				// drawEggSide(EGG_NEAR_LEFT_RSIDE);
+				egg_visibility[EGG_NEAR_LEFT_RSIDE] = true;
 			}
 			if(content & 4) {
-				drawEggSide(BROKEN_EGG_NEAR_LEFT_RSIDE);
+				// drawEggSide(BROKEN_EGG_NEAR_LEFT_RSIDE);
+				egg_visibility[BROKEN_EGG_NEAR_LEFT_RSIDE] = true;
 			}
 		}
 
@@ -290,10 +308,14 @@ void draw_dungeon(unsigned int x, unsigned int y) {
 	content = get_cell_content(front_near);
 	if(content != ERROR_OUT_OF_BOUND) {
 		if(content & 8) {
-			drawEgg(EGG_NEAR_LEFT);
+			// drawEgg(EGG_NEAR_LEFT);
+			egg_visibility[EGG_NEAR_LEFT] = true;
+			egg_visibility[EGG_NEAR_RIGHT] = true;
 		}
 		if(content & 4) {
-			drawEgg(BROKEN_EGG_NEAR_LEFT);
+			// drawEgg(BROKEN_EGG_NEAR_LEFT);
+			egg_visibility[BROKEN_EGG_NEAR_LEFT] = true;
+			egg_visibility[BROKEN_EGG_NEAR_RIGHT] = true;
 		}
 
 		if(content & 1) {
@@ -346,12 +368,14 @@ void draw_dungeon(unsigned int x, unsigned int y) {
 	
 	content = get_cell_content(hero.position);
 	if(content & 4) {
-		drawEgg(BROKEN_EGG_LEFT);
+		// drawEgg(BROKEN_EGG_LEFT);
+		egg_visibility[BROKEN_EGG_LEFT] = true;
+		egg_visibility[BROKEN_EGG_RIGHT] = true;
 	}
 	
 	printHeroStats(x, y);
 
-	SHOW_SPRITES;
+	// SHOW_SPRITES;
 }
 
 

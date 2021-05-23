@@ -87,6 +87,8 @@ const int egg_position[22][2] = {
 	{56, 96}		// BROKEN_EGG_RIGHT
 };
 
+bool egg_visibility[22];
+
 void drawEggSide(UINT8 egg) {
 	move_sprite(egg, egg_position[egg][0] + x, egg_position[egg][1] + y);
 }
@@ -94,6 +96,16 @@ void drawEggSide(UINT8 egg) {
 void drawEgg(UINT8 egg) {
 	drawEggSide(egg);
 	drawEggSide(egg + 1);
+}
+
+void drawAllVisibleEggs() {
+	hideEggs();
+
+	for (UINT8 i = 0; i < 22; i ++) {
+		if (egg_visibility[i]) {
+			drawEggSide(i);
+		}
+	}
 }
 
 void initEggs() {
@@ -151,6 +163,12 @@ void hideEggs() {
 	move_sprite(BROKEN_EGG_NEAR_RIGHT_LSIDE, 0, 0);
 	move_sprite(BROKEN_EGG_LEFT, 0, 0);
 	move_sprite(BROKEN_EGG_RIGHT, 0, 0);
+}
+
+void set_all_egg_visibility(bool visibility) {
+	for (UINT8 i = 0; i < 22; i ++) {
+		egg_visibility[i] = visibility;
+	}
 }
 
 void hideBlobs() {
@@ -308,6 +326,9 @@ int y_buffer = 1;
 void swap_buffer() {
 	move_bkg(0, Y_BUFFERS[y_buffer]*8);
 	y_buffer = (y_buffer + 1) % 2;
+	if( gameScreen == SCREEN_EXPLORATION) {
+		drawAllVisibleEggs();
+	}
 }
 
 void sound_OK() {

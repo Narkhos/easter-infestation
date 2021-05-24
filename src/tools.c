@@ -245,7 +245,13 @@ void set_screen(UINT8 screen) {
 	clear_win();
 
 	if (gameScreen != SCREEN_EXPLORATION) hideEggs();
-	if (gameScreen != SCREEN_BATTLE) hideBlobs();
+	if (gameScreen != SCREEN_BATTLE
+		&& gameScreen != SCREEN_BATTLE_NEAR_ATTACK
+		&& gameScreen != SCREEN_BATTLE_FAR_ATTACK
+		&& gameScreen != SCREEN_BATTLE_MENU) {
+		
+		hideBlobs();
+	}
 
 	light(true);
 
@@ -284,6 +290,13 @@ void set_screen(UINT8 screen) {
 			initBattlefield(getAreaLevel());
     		set_bkg_data(0, BATTLEFIELD_TILESET_TILE_COUNT, BATTLEFIELD_TILESET);
 			draw_battlefield(x, y + Y_BUFFERS[y_buffer], true);
+			init_menu(4);
+			break;
+		case SCREEN_BATTLE_MENU:
+			init_menu(4);
+			break;
+		case SCREEN_BATTLE_NEAR_ATTACK:
+		case SCREEN_BATTLE_FAR_ATTACK:
 			init_menu(4);
 			break;
 		case SCREEN_BATTLE_WIN:

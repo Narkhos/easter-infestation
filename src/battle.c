@@ -293,17 +293,13 @@ void hitBlob(UINT8 index, UINT8 action_type) {
 	}
 }
 
-UINT8 assaultResolution(UINT8 action_type) {
+UINT8 assaultResolution(UINT8 action_type, UINT8 direction) {
 	switch(action_type) {
 		case ACTION_MELEE:
-			for(int i = 3; i < 6; i++) {
-				hitBlob(i, action_type);
-			}
+			hitBlob(direction + 3, action_type);
 			break;
 		case ACTION_LONG_RANGE:
-			for(int i = 0; i < 3; i++) {
-				hitBlob(i, action_type);
-			}
+			hitBlob(direction, action_type);
 			break;
 	}
 
@@ -347,21 +343,104 @@ UINT8 state_battle() {
 	switch(draw_menu()) {
 		case 0:
 			sound_OK();
-			newState = assaultResolution(ACTION_MELEE);
+			newState = SCREEN_BATTLE_NEAR_ATTACK;
 			changed = true;
 			break;
 		case 1:
 			sound_OK();
-			newState = assaultResolution(ACTION_LONG_RANGE);
+			newState = SCREEN_BATTLE_FAR_ATTACK;
 			changed = true;
 			break;
 		case 2:
 			sound_OK();
-			newState = assaultResolution(ACTION_BLOCK);
+			newState = assaultResolution(ACTION_BLOCK, 0);
 			changed = true;
 			break;
 		case 3:
 			healing(false);
+			changed = true;
+			break;
+	}
+
+	if (changed) {
+		draw_battlefield(x, y + Y_BUFFERS[y_buffer], true);
+		if (newState == SCREEN_SAME) swap_buffer();
+	}
+		
+	return newState;
+}
+
+UINT8 state_battle_near_attack() {
+	UINT8 newState = SCREEN_SAME;
+	bool changed = false;
+
+	text_print_string_win(0, 1, "MELEE ATTACK");
+
+	text_print_string_win(1, 2, "LEFTm");
+	text_print_string_win(1, 3, "FRONTm");
+	text_print_string_win(1, 4, "RIGHTm");
+	text_print_string_win(1, 5, "BACK");
+
+	switch(draw_menu()) {
+		case 0:
+			sound_OK();
+			newState = assaultResolution(ACTION_MELEE, 0);
+			changed = true;
+			break;
+		case 1:
+			sound_OK();
+			newState = assaultResolution(ACTION_MELEE, 1);
+			changed = true;
+			break;
+		case 2:
+			sound_OK();
+			newState = assaultResolution(ACTION_MELEE, 2);
+			changed = true;
+			break;
+		case 3:
+			sound_OK();
+			newState = SCREEN_BATTLE_MENU;
+			changed = true;
+			break;
+	}
+
+	if (changed) {
+		draw_battlefield(x, y + Y_BUFFERS[y_buffer], true);
+		if (newState == SCREEN_SAME) swap_buffer();
+	}
+		
+	return newState;
+}
+
+UINT8 state_battle_far_attack() {
+	UINT8 newState = SCREEN_SAME;
+	bool changed = false;
+
+	text_print_string_win(0, 1, "LONG RANGE ATTACK");
+
+	text_print_string_win(1, 2, "LEFTo");
+	text_print_string_win(1, 3, "FRONTo");
+	text_print_string_win(1, 4, "RIGHTo");
+	text_print_string_win(1, 5, "BACK");
+
+	switch(draw_menu()) {
+		case 0:
+			sound_OK();
+			newState = assaultResolution(ACTION_LONG_RANGE, 0);
+			changed = true;
+			break;
+		case 1:
+			sound_OK();
+			newState = assaultResolution(ACTION_LONG_RANGE, 1);
+			changed = true;
+			break;
+		case 2:
+			sound_OK();
+			newState = assaultResolution(ACTION_LONG_RANGE, 2);
+			changed = true;
+			break;
+		case 3:
+			newState = SCREEN_BATTLE_MENU;
 			changed = true;
 			break;
 	}

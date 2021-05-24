@@ -90,7 +90,14 @@ void main(void) {
 				newState = state_knight();
 				break;
 			case SCREEN_BATTLE:
+			case SCREEN_BATTLE_MENU:
 				newState = state_battle();
+				break;
+			case SCREEN_BATTLE_NEAR_ATTACK:
+				newState = state_battle_near_attack();
+				break;
+			case SCREEN_BATTLE_FAR_ATTACK:
+				newState = state_battle_far_attack();
 				break;
 			case SCREEN_BATTLE_WIN:
 				newState = state_battle_win();

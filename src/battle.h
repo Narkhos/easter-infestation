@@ -63,7 +63,9 @@ extern UINT8 state_battle_win();
 
 extern void blobsAssault(UINT8 action_type);
 extern void hitBlob(UINT8 index, UINT8 action_type);
-extern UINT8 assaultResolution(UINT8 action_type);
+extern UINT8 assaultResolution(UINT8 action_type, UINT8 direction);
 extern UINT8 state_battle();
+extern UINT8 state_battle_near_attack();
+extern UINT8 state_battle_far_attack();
 
 #endif

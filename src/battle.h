@@ -68,4 +68,7 @@ extern UINT8 state_battle();
 extern UINT8 state_battle_near_attack();
 extern UINT8 state_battle_far_attack();
 
+extern UINT8 blobIndexToSprite(UINT8 index);
+
+extern void initBlobsPalette();
 #endif

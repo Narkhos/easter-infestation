@@ -132,14 +132,28 @@ void drawBlobState(UINT8 index, unsigned int x, unsigned int y) {
 		}
 }
 
+
+void initBlobsPalette() {
+	UINT8 blobSprite;
+	for (UINT8 i = 0; i < 6; i++) {
+		blobSprite = blobIndexToSprite(i);
+		set_sprite_prop(blobSprite, get_sprite_prop(blobSprite) & ~S_PALETTE);
+		set_sprite_prop(blobSprite + 1, get_sprite_prop(blobSprite + 1) & ~S_PALETTE);
+	}
+}
+
+UINT8 blobIndexToSprite(UINT8 index) {
+	return BLOB_FAR_LEFT_LSIDE + index * 2;
+}
+
 void drawBlob(UINT8 index, unsigned int x, unsigned int y) {
 
 	if (!battlefield.blob[index].dead) {
-		drawBlobSprite(BLOB_FAR_LEFT_LSIDE + index * 2);
+		drawBlobSprite(blobIndexToSprite(index));
 
 		drawBlobState(index, x, y);
 	} else {
-		hideBlobSprite(BLOB_FAR_LEFT_LSIDE + index * 2);
+		hideBlobSprite(blobIndexToSprite(index));
 	}
 }
 
@@ -285,6 +299,9 @@ void hitBlob(UINT8 index, UINT8 action_type) {
 
 	if (damages > 0) {
 		battlefield.blob[index].HP -= damages;
+		UINT8 blobSprite = blobIndexToSprite(index);
+		set_sprite_prop(blobSprite, get_sprite_prop(blobSprite) | S_PALETTE);
+		set_sprite_prop(blobSprite + 1, get_sprite_prop(blobSprite + 1) | S_PALETTE);
 	}
 
 	if (battlefield.blob[index].HP <= 0) {
@@ -333,6 +350,8 @@ UINT8 state_battle() {
 	UINT8 newState = SCREEN_SAME;
 	bool changed = false;
 
+	initBlobsPalette();
+
 	text_print_string_win(0, 1, "CHOOSE YOUR MOVE");
 
 	text_print_string_win(1, 2, "MELEE ATTACKm");
@@ -373,6 +392,8 @@ UINT8 state_battle() {
 UINT8 state_battle_near_attack() {
 	UINT8 newState = SCREEN_SAME;
 	bool changed = false;
+
+	initBlobsPalette();
 
 	text_print_string_win(0, 1, "MELEE ATTACK");
 
@@ -415,6 +436,8 @@ UINT8 state_battle_near_attack() {
 UINT8 state_battle_far_attack() {
 	UINT8 newState = SCREEN_SAME;
 	bool changed = false;
+
+	initBlobsPalette();
 
 	text_print_string_win(0, 1, "LONG RANGE ATTACK");
 

@@ -271,6 +271,7 @@ void blobsAssault(UINT8 action_type) {
 				UINT8 blobSprite = blobIndexToSprite(i);
 				scroll_sprite(blobSprite, 0, 2);
 				scroll_sprite(blobSprite + 1, 0, 2);
+				BGP_REG = PALETTE(SILVER, SILVER, GRAY, BLACK);
 				UINT16 damages = battlefield.blob[i].ATT;
 				if (action_type == ACTION_BLOCK) {
 					damages -= hero.shield;
@@ -353,6 +354,7 @@ UINT8 state_battle() {
 	UINT8 newState = SCREEN_SAME;
 	bool changed = false;
 
+	BGP_REG = PALETTE(WHITE, SILVER, GRAY, BLACK);
 	initBlobsPalette();
 
 	text_print_string_win(0, 1, "CHOOSE YOUR MOVE");
@@ -396,6 +398,7 @@ UINT8 state_battle_near_attack() {
 	UINT8 newState = SCREEN_SAME;
 	bool changed = false;
 
+	BGP_REG = PALETTE(WHITE, SILVER, GRAY, BLACK);
 	initBlobsPalette();
 
 	text_print_string_win(0, 1, "MELEE ATTACK");
@@ -440,6 +443,7 @@ UINT8 state_battle_far_attack() {
 	UINT8 newState = SCREEN_SAME;
 	bool changed = false;
 
+	BGP_REG = PALETTE(WHITE, SILVER, GRAY, BLACK);
 	initBlobsPalette();
 
 	text_print_string_win(0, 1, "LONG RANGE ATTACK");

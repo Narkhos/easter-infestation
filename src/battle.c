@@ -268,6 +268,9 @@ void blobsAssault(UINT8 action_type) {
 	for(int i = 0; i < 6; i++) {
 		if (!battlefield.blob[i].dead) {
 			if (battlefield.blob[i].state == ENEMY_STATE_ATTACK) {
+				UINT8 blobSprite = blobIndexToSprite(i);
+				scroll_sprite(blobSprite, 0, 2);
+				scroll_sprite(blobSprite + 1, 0, 2);
 				UINT16 damages = battlefield.blob[i].ATT;
 				if (action_type == ACTION_BLOCK) {
 					damages -= hero.shield;

@@ -388,7 +388,8 @@ bool player_move(int direction, UINT8* newState) {
 	if (dest_content == ERROR_OUT_OF_BOUND) {
 		return false;
 	} else {
-		clear_win();
+		//clear_win();
+		set_win_tiles(0, 2, 21, 5, win_tilemap);
 
 		// Check for Inn to enter
 		if(dest_content == MAP_INN) {
@@ -596,6 +597,21 @@ UINT8 state_exploration() {
 	bool changed = false;
 	UINT8 newState = SCREEN_SAME;
 
+	switch(hero.direction) {
+		case 0:
+			text_print_string_win(7, 1, "NORTH");
+			break;
+		case 1:
+			text_print_string_win(7, 1, "EAST ");
+			break;
+		case 2:
+			text_print_string_win(7, 1, "SOUTH");
+			break;
+		case 3:
+			text_print_string_win(7, 1, "WEST ");
+			break;
+	}
+	
 	if (keys > 0) {
 		if (keys & J_UP) {
 			changed = player_move(forward[hero.direction], &newState);

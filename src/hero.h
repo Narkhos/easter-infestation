@@ -42,7 +42,7 @@ typedef struct
 } Hero;
 
 extern int starting_position[2];
-extern int starting_direction; // nord : 0, est : 1, sud : 2, ouest : 3
+extern int starting_direction; // north : 0, east : 1, south : 2, west : 3
 
 extern Hero hero;
 

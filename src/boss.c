@@ -85,9 +85,7 @@ void bossAssault(UINT8 action_type) {
 		swap_buffer();
 
 		// Wait for 10 frames
-		for(UINT8 i = 10; i != 0; --i) {
-			wait_vbl_done();
-		}
+		waiting(10);
 
 		if (action_type == ACTION_BLOCK) {
 			damages -= hero.shield;

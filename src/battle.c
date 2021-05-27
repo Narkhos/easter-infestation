@@ -272,6 +272,15 @@ void blobsAssault(UINT8 action_type) {
 				scroll_sprite(blobSprite, 0, 2);
 				scroll_sprite(blobSprite + 1, 0, 2);
 				BGP_REG = PALETTE(SILVER, SILVER, GRAY, BLACK);
+
+				waiting(10);
+
+				BGP_REG = PALETTE(WHITE, SILVER, GRAY, BLACK);
+				scroll_sprite(blobSprite, 0, -2);
+				scroll_sprite(blobSprite + 1, 0, -2);
+
+				waiting(10);
+
 				UINT16 damages = battlefield.blob[i].ATT;
 				if (action_type == ACTION_BLOCK) {
 					damages -= hero.shield;
@@ -306,6 +315,13 @@ void hitBlob(UINT8 index, UINT8 action_type) {
 		UINT8 blobSprite = blobIndexToSprite(index);
 		set_sprite_prop(blobSprite, get_sprite_prop(blobSprite) | S_PALETTE);
 		set_sprite_prop(blobSprite + 1, get_sprite_prop(blobSprite + 1) | S_PALETTE);
+
+		waiting(10);
+
+		set_sprite_prop(blobSprite, get_sprite_prop(blobSprite) & ~S_PALETTE);
+		set_sprite_prop(blobSprite + 1, get_sprite_prop(blobSprite + 1) & ~S_PALETTE);
+
+		waiting(5);
 	}
 
 	if (battlefield.blob[index].HP <= 0) {

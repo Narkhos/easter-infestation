@@ -81,12 +81,6 @@ void bossAssault(UINT8 action_type) {
 	if (boss.state == ENEMY_STATE_ATTACK) {
 		UINT16 damages = boss.ATT;
 
-		draw_boss_attack(x, y + Y_BUFFERS[y_buffer]);
-		swap_buffer();
-
-		// Wait for 10 frames
-		waiting(10);
-
 		if (action_type == ACTION_BLOCK) {
 			damages -= hero.shield;
 		}
@@ -95,6 +89,12 @@ void bossAssault(UINT8 action_type) {
 			hero.HP -= damages;
 			if (hero.HP < 0) hero.HP = 0;
 		}
+
+		draw_boss_attack(x, y + Y_BUFFERS[y_buffer]);
+		swap_buffer();
+
+		// Wait for 15 frames
+		waiting(15);
 	}
 }
 

@@ -269,6 +269,19 @@ void blobsAssault(UINT8 action_type) {
 		if (!battlefield.blob[i].dead) {
 			if (battlefield.blob[i].state == ENEMY_STATE_ATTACK) {
 				UINT8 blobSprite = blobIndexToSprite(i);
+
+				UINT16 damages = battlefield.blob[i].ATT;
+				if (action_type == ACTION_BLOCK) {
+					damages -= hero.shield;
+				}
+
+				if (damages > 0) {
+					hero.HP -= damages;
+					if (hero.HP < 0) hero.HP = 0;
+				}
+
+				printHeroStats(x, y);
+
 				scroll_sprite(blobSprite, 0, 2);
 				scroll_sprite(blobSprite + 1, 0, 2);
 				BGP_REG = PALETTE(SILVER, SILVER, GRAY, BLACK);
@@ -280,16 +293,6 @@ void blobsAssault(UINT8 action_type) {
 				scroll_sprite(blobSprite + 1, 0, -2);
 
 				waiting(10);
-
-				UINT16 damages = battlefield.blob[i].ATT;
-				if (action_type == ACTION_BLOCK) {
-					damages -= hero.shield;
-				}
-
-				if (damages > 0) {
-					hero.HP -= damages;
-					if (hero.HP < 0) hero.HP = 0;
-				}
 			}
 		}
 	}

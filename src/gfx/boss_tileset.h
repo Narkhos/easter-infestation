@@ -4,7 +4,7 @@
 #define _BOSS_TILESET_H
 
 extern const UINT8 BOSS_TILESET[];
-#define BOSS_TILESET_TILE_COUNT 71
+#define BOSS_TILESET_TILE_COUNT 148
 
 
 #endif

@@ -21,6 +21,7 @@ extern void drawBossState(unsigned int x, unsigned int y);
 
 // DRAW BOSS
 extern void draw_boss(unsigned int x, unsigned int y);
+extern void draw_boss_attack(unsigned int x, unsigned int y);
 
 
 extern void bossAssault(UINT8 action_type);

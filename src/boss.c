@@ -6,7 +6,9 @@
 #include "hero.h"
 #include "boss.h"
 
-#include "gfx/boss_tilemap.h"
+#include "gfx/boss_tileset.h"
+#include "gfx/boss_idle_tilemap.h"
+#include "gfx/boss_attack_tilemap.h"
 
 Boss boss;
 
@@ -61,7 +63,14 @@ void drawBossState(unsigned int x, unsigned int y) {
 
 // DRAW BOSS
 void draw_boss(unsigned int x, unsigned int y) {
-	set_bkg_tiles(x, y, BOSS_TILEMAP_WIDTH, BOSS_TILEMAP_HEIGHT, BOSS_TILEMAP);
+	set_bkg_tiles(x, y, BOSS_IDLE_TILEMAP_WIDTH, BOSS_IDLE_TILEMAP_HEIGHT, BOSS_IDLE_TILEMAP);
+	printHeroStats(x, y);
+	drawBossState(x, y);
+}
+
+// DRAW BOSS ATTACK
+void draw_boss_attack(unsigned int x, unsigned int y) {
+	set_bkg_tiles(x, y, BOSS_ATTACK_TILEMAP_WIDTH, BOSS_ATTACK_TILEMAP_HEIGHT, BOSS_ATTACK_TILEMAP);
 	printHeroStats(x, y);
 	drawBossState(x, y);
 }
@@ -71,6 +80,15 @@ void bossAssault(UINT8 action_type) {
 	
 	if (boss.state == ENEMY_STATE_ATTACK) {
 		UINT16 damages = boss.ATT;
+
+		draw_boss_attack(x, y + Y_BUFFERS[y_buffer]);
+		swap_buffer();
+
+		// Wait for 10 frames
+		for(UINT8 i = 10; i != 0; --i) {
+			wait_vbl_done();
+		}
+
 		if (action_type == ACTION_BLOCK) {
 			damages -= hero.shield;
 		}
@@ -177,8 +195,9 @@ UINT8 state_boss() {
 
 	if (changed) {
 		draw_boss(x, y + Y_BUFFERS[y_buffer]);
+
 		if (newState == SCREEN_SAME) swap_buffer();
 	}
-		
+
 	return newState;
 }

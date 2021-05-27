@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "door_right_near_side_tilemap.h": "c",
+        "boss_attack_tilemap.h": "c"
+    }
+}

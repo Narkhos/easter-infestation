@@ -114,4 +114,5 @@ extern void death_reset();
 
 extern bool game_victory;
 
+extern void waiting(UINT8 frames);
 #endif

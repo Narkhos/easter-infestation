@@ -376,3 +376,9 @@ void death_reset() {
 		}
 	}
 }
+
+void waiting(UINT8 frames) {
+	for(UINT8 i = frames; i != 0; --i) {
+		wait_vbl_done();
+	}
+}

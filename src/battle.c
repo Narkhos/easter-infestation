@@ -423,7 +423,7 @@ UINT8 state_battle_near_attack() {
 	text_print_string_win(0, 1, "MELEE ATTACK");
 
 	text_print_string_win(1, 2, "LEFTm");
-	text_print_string_win(1, 3, "FRONTm");
+	text_print_string_win(1, 3, "MIDDLEm");
 	text_print_string_win(1, 4, "RIGHTm");
 	text_print_string_win(1, 5, "BACK");
 
@@ -468,7 +468,7 @@ UINT8 state_battle_far_attack() {
 	text_print_string_win(0, 1, "LONG RANGE ATTACK");
 
 	text_print_string_win(1, 2, "LEFTo");
-	text_print_string_win(1, 3, "FRONTo");
+	text_print_string_win(1, 3, "MIDDLEo");
 	text_print_string_win(1, 4, "RIGHTo");
 	text_print_string_win(1, 5, "BACK");
 

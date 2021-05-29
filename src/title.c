@@ -6,6 +6,8 @@
 #include "tools.h"
 #include "hero.h"
 
+#include "music/hUGEDriver.h"
+
 // DRAW TITLE
 void draw_title(unsigned int x, unsigned int y) {
 	text_print_string_bkg(x + 1, y + 2, "EASTER INFESTATION");
@@ -28,6 +30,12 @@ UINT8 state_title() {
 	selected = draw_menu();
 
 	if (selected >= 0) {
+		// Disable title music
+		hUGE_mute_channel(HT_CH1, true);
+		hUGE_mute_channel(HT_CH2, true);
+		hUGE_mute_channel(HT_CH3, true);
+		hUGE_mute_channel(HT_CH4, true);
+
 		initHero(selected); // 0: GLADIATOR; 1: SCOUT; 2: PRINCE
 		sound_OK();
 		return SCREEN_EXPLORATION;

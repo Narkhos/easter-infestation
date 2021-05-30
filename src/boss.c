@@ -99,7 +99,7 @@ void bossAssault(UINT8 action_type) {
 }
 
 void hitBoss(UINT8 action_type) {
-	UINT16 damages = hero.combat;
+	INT16 damages = hero.combat;
 	if (boss.state == ENEMY_STATE_DEFEND) {
 		damages -= boss.DEF;
 	}

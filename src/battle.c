@@ -49,7 +49,7 @@ UINT8 countBlobs() {
 void initBlob(UINT8 index, UINT8 level) {
 
 	battlefield.blob[index].LVL = level;
-	battlefield.blob[index].HP_MAX = battlefield.blob[index].LVL / 2 + 5;
+	battlefield.blob[index].HP_MAX = battlefield.blob[index].LVL + 5;
 	battlefield.blob[index].HP = battlefield.blob[index].HP_MAX;
 	battlefield.blob[index].DEF = battlefield.blob[index].LVL / 4 + 1;
 	battlefield.blob[index].ATT = battlefield.blob[index].LVL / 4 + 2;
@@ -264,15 +264,19 @@ UINT8 state_battle_win() {
 }
 
 void blobsAssault(UINT8 action_type) {
-	
+	bool blocked = false;
+
 	for(int i = 0; i < 6; i++) {
 		if (!battlefield.blob[i].dead) {
 			if (battlefield.blob[i].state == ENEMY_STATE_ATTACK) {
 				UINT8 blobSprite = blobIndexToSprite(i);
 
 				UINT16 damages = battlefield.blob[i].ATT;
-				if (action_type == ACTION_BLOCK) {
+
+				// block first attack only
+				if (action_type == ACTION_BLOCK && !blocked) {
 					damages -= hero.shield;
+					blocked = true;
 				}
 
 				if (damages > 0) {
@@ -280,7 +284,9 @@ void blobsAssault(UINT8 action_type) {
 					if (hero.HP < 0) hero.HP = 0;
 				}
 
-				printHeroStats(x, y);
+				// printHeroStats(x, y);
+				draw_battlefield(x, y + Y_BUFFERS[y_buffer], true);
+				swap_buffer();
 
 				scroll_sprite(blobSprite, 0, 2);
 				scroll_sprite(blobSprite + 1, 0, 2);
@@ -299,7 +305,7 @@ void blobsAssault(UINT8 action_type) {
 }
 
 void hitBlob(UINT8 index, UINT8 action_type) {
-	UINT16 damages = hero.combat;
+	INT16 damages = hero.combat;
 	if (battlefield.blob[index].state == ENEMY_STATE_DEFEND) {
 		damages -= battlefield.blob[index].DEF;
 	}

@@ -19,6 +19,8 @@
 #include "gfx/battlefield_tileset.h"
 #include "gfx/boss_tileset.h"
 
+UINT8 difficulty = 6;
+
 bool game_victory = false;
 
 const UINT16 powOfTen[5] = {1, 10, 100, 1000, 10000};
@@ -287,7 +289,7 @@ void set_screen(UINT8 screen) {
 			break;
 		case SCREEN_BATTLE:
 			SWITCH_ROM_MBC1(3);
-			initBattlefield(getAreaLevel());
+			initBattlefield(getAreaLevel() * difficulty);
     		set_bkg_data(0, BATTLEFIELD_TILESET_TILE_COUNT, BATTLEFIELD_TILESET);
 			draw_battlefield(x, y + Y_BUFFERS[y_buffer], true);
 			init_menu(4);

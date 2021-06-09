@@ -7,6 +7,7 @@
 #include "exploration.h"
 #include "title.h"
 #include "inn.h"
+#include "alchemist.h"
 #include "blacksmith.h"
 #include "knight.h"
 #include "battle.h"
@@ -14,6 +15,7 @@
 
 #include "gfx/dungeon_tileset.h"
 #include "gfx/inn_tileset.h"
+#include "gfx/alchemist_tileset.h"
 #include "gfx/blacksmith_tileset.h"
 #include "gfx/knight_tileset.h"
 #include "gfx/battlefield_tileset.h"
@@ -22,6 +24,8 @@
 UINT8 difficulty = 6;
 
 bool game_victory = false;
+
+bool alchimist_enabled = false;
 
 const UINT16 powOfTen[5] = {1, 10, 100, 1000, 10000};
 
@@ -276,6 +280,18 @@ void set_screen(UINT8 screen) {
 			draw_inn(x, y + Y_BUFFERS[y_buffer]);
 			init_menu(1);
 			break;
+		case SCREEN_ALCHEMIST:
+			SWITCH_ROM_MBC1(1);
+    		set_bkg_data(0, ALCHEMIST_TILESET_TILE_COUNT, ALCHEMIST_TILESET);
+			draw_alchemist(x, y + Y_BUFFERS[y_buffer]);
+			init_menu(4);
+			break;
+		case SCREEN_ALCHEMIST_EXIT:
+			SWITCH_ROM_MBC1(1);
+    		set_bkg_data(0, ALCHEMIST_TILESET_TILE_COUNT, ALCHEMIST_TILESET);
+			draw_alchemist(x, y + Y_BUFFERS[y_buffer]);
+			init_menu(1);
+			break;
 		case SCREEN_BLACKSMITH:
 			SWITCH_ROM_MBC1(1);
     		set_bkg_data(0, BLACKSMITH_TILESET_TILE_COUNT, BLACKSMITH_TILESET);
@@ -363,6 +379,10 @@ void sound_KO() {
 }
 
 void death_reset() {
+	alchimist_enabled = true;
+
+	if (!hero.torch) toggleTorch();
+
 	hero.position[0] = starting_position[0];
 	hero.position[1] = starting_position[1];
 	hero.direction = starting_direction;

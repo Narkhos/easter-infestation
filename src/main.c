@@ -14,6 +14,7 @@
 #include "battle.h"
 #include "boss.h"
 #include "inn.h"
+#include "alchemist.h"
 #include "hero.h"
 #include "title.h"
 
@@ -82,6 +83,12 @@ void main(void) {
 				break;
 			case SCREEN_INN_EXIT:
 				newState = state_inn_exit();
+				break;
+			case SCREEN_ALCHEMIST:
+				newState = state_alchemist();
+				break;
+			case SCREEN_ALCHEMIST_EXIT:
+				newState = state_alchemist_exit();
 				break;
 			case SCREEN_BLACKSMITH:
 				newState = state_blacksmith();

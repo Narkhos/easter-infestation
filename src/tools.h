@@ -26,17 +26,19 @@ extern unsigned char win_tilemap[6*21];
 #define SCREEN_EXPLORATION 1
 #define SCREEN_INN 2
 #define SCREEN_INN_EXIT 3
-#define SCREEN_BLACKSMITH 4
-#define SCREEN_KNIGHT 5
-#define SCREEN_BATTLE 6
-#define SCREEN_BATTLE_MENU 7
-#define SCREEN_BATTLE_NEAR_ATTACK 8
-#define SCREEN_BATTLE_FAR_ATTACK 9
-#define SCREEN_BATTLE_WIN 10
-#define SCREEN_BATTLE_LOOSE 11
-#define SCREEN_BOSS 12
-#define SCREEN_TITLE 13
-#define SCREEN_LEVEL_UP 14
+#define SCREEN_ALCHEMIST 4
+#define SCREEN_ALCHEMIST_EXIT 5
+#define SCREEN_BLACKSMITH 6
+#define SCREEN_KNIGHT 7
+#define SCREEN_BATTLE 8
+#define SCREEN_BATTLE_MENU 9
+#define SCREEN_BATTLE_NEAR_ATTACK 10
+#define SCREEN_BATTLE_FAR_ATTACK 11
+#define SCREEN_BATTLE_WIN 12
+#define SCREEN_BATTLE_LOOSE 13
+#define SCREEN_BOSS 14
+#define SCREEN_TITLE 15
+#define SCREEN_LEVEL_UP 16
 
 extern UINT8 gameScreen;
 
@@ -100,6 +102,10 @@ extern void death_reset();
 // ECONOMICS
 #define INN_BASE_COST 151
 #define UPGRADE_BASE_COST 201
+
+#define POTION_BASE_COST 51
+
+extern bool alchimist_enabled;
 
 // ENEMIES
 #define ENEMY_STATE_IDLE 0

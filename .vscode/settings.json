@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "door_right_near_side_tilemap.h": "c",
-        "boss_attack_tilemap.h": "c"
+        "boss_attack_tilemap.h": "c",
+        "alchemist.h": "c",
+        "inn_tileset.h": "c",
+        "boss_tileset.h": "c"
     }
 }

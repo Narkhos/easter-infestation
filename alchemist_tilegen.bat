@@ -1,0 +1,2 @@
+img2gb tileset --name alchemist_tileset --output-c-file=src/gfx/alchemist_tileset.c --output-header-file=src/gfx/alchemist_tileset.h --output-image=obj/gfx/alchemist.png --deduplicate img/alchemist.png
+img2gb tilemap --name alchemist_tilemap --output-c-file=src/gfx/alchemist_tilemap.c --output-header-file=src/gfx/alchemist_tilemap.h obj/gfx/alchemist.png img/alchemist.png

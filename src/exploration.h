@@ -2,18 +2,22 @@
 #define _EXPLORATION_H
 
 // MAP CODES
-#define MAP_FLOOR 		 		 0 // 0b00000000
-#define MAP_WALL 		 		 1 // 0b00000001	
-#define MAP_DOOR_OPENED  		 2 // 0b00000010
-#define MAP_DOOR_CLOSED  		 3 // 0b00000011
-#define MAP_EGG_OPENED   		 4 // 0b00000100
-#define MAP_EGG_CLOSED   		 8 // 0b00001000
-#define MAP_KEY		    		16 // 0b00010000
-#define MAP_EGG_CLOSED_WITH_KEY 24 // MAP_EGG_CLOSED | MAP_KEY
-#define MAP_EGG_OPENED_WITH_KEY 20 // MAP_EGG_OPENED | MAP_KEY
-#define MAP_INN					34 // 0b00100010
-#define MAP_BLACKSMITH			66 // 0b01000010		
-#define MAP_KNIGHT  			98 // 0b01100010		
+#define MAP_FLOOR 		 		  0 // 0b00000000
+#define MAP_WALL 		 		  1 // 0b00000001	
+#define MAP_DOOR_OPENED  		  2 // 0b00000010
+#define MAP_DOOR_CLOSED  		  3 // 0b00000011
+#define MAP_EGG_OPENED   		  4 // 0b00000100
+#define MAP_EGG_CLOSED   		  8 // 0b00001000
+#define MAP_KEY		    		 16 // 0b00010000
+#define MAP_EGG_CLOSED_WITH_KEY  24 // MAP_EGG_CLOSED | MAP_KEY
+#define MAP_EGG_OPENED_WITH_KEY  20 // MAP_EGG_OPENED | MAP_KEY
+#define MAP_INN					 34 // 0b00100010
+#define MAP_BLACKSMITH			 66 // 0b01000010		
+#define MAP_KNIGHT  			 98 // 0b01100010		
+#define MAP_ALCHEMIST  			130 // 0b10000010		
+
+#define X_ALCHEMIST 0
+#define Y_ALCHEMIST 8
 
 extern unsigned int level[25][25];
 

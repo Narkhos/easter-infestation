@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <gb/gb.h>
 #include "tools.h"
+#include "exploration.h"
 #include "text.h"
 #include "hero.h"
 
@@ -105,6 +106,11 @@ void light(bool on) {
 void toggleTorch() {
 	hero.torch = !hero.torch;
 	light(hero.torch);
+	if (hero.torch || !alchimist_enabled) {
+		level[Y_ALCHEMIST][X_ALCHEMIST] = MAP_WALL;
+	} else {
+		level[Y_ALCHEMIST][X_ALCHEMIST] = MAP_ALCHEMIST;
+	}
 }
 
 

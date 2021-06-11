@@ -459,6 +459,8 @@ bool player_move(int direction, UINT8* newState) {
 		} else {
 			// Gestion des rencontres aléatoires
 			if (getAreaLevel() > 0 && !hero.torch && ((rand() & 3) == 0)) {
+				// *newState = SCREEN_BOSS;
+				// return false;
 				if ( getAreaLevel() >= 3) {
 					if ((rand() & 3) == 0) {
 						*newState = SCREEN_BOSS;
@@ -647,18 +649,6 @@ UINT8 state_exploration() {
 			healing(true);
 			changed = true;
 		}
-
-		if (keys & J_SELECT) {
-			return SCREEN_TITLE;
-		}
-
-		/*if (keys & J_SELECT) printf("SELECT ");
-		if (keys & J_START) printf("START ");
-		if (keys & J_A) printf("A ");
-		if (keys & J_B) printf("B ");
-		printf("\n");*/
-
-	// ... ou "-" si aucune touche n'est pressée.
 	}
 		
 	if (changed) {

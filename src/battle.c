@@ -411,6 +411,11 @@ UINT8 state_battle() {
 			break;
 	}
 
+	if (keys > 0 && (keys & J_START)) {
+		healing(false);
+		changed = true;
+	}
+
 	if (changed) {
 		draw_battlefield(x, y + Y_BUFFERS[y_buffer], true);
 		if (newState == SCREEN_SAME) swap_buffer();
@@ -456,6 +461,11 @@ UINT8 state_battle_near_attack() {
 			break;
 	}
 
+	if (keys > 0 && (keys & J_START)) {
+		healing(false);
+		changed = true;
+	}
+
 	if (changed) {
 		draw_battlefield(x, y + Y_BUFFERS[y_buffer], true);
 		if (newState == SCREEN_SAME) swap_buffer();
@@ -498,6 +508,11 @@ UINT8 state_battle_far_attack() {
 			newState = SCREEN_BATTLE_MENU;
 			changed = true;
 			break;
+	}
+
+	if (keys > 0 && (keys & J_START)) {
+		healing(false);
+		changed = true;
 	}
 
 	if (changed) {

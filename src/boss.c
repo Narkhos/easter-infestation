@@ -191,6 +191,11 @@ UINT8 state_boss() {
 			break;
 	}
 
+	if (keys > 0 && (keys & J_START)) {
+		healing(false);
+		changed = true;
+	}
+
 	if (changed) {
 		draw_boss(x, y + Y_BUFFERS[y_buffer]);
 

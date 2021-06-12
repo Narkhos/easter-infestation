@@ -213,7 +213,7 @@ void initBlobs() {
 void healing(bool withText) {
 	UINT16 maxHP = getHeroMaxHP();
 
-	if (hero.herbs == 0) {
+	if (hero.potions == 0) {
 		if (withText) {
 			text_print_string_win(0, 3, "POTION(f) REQUIRED");
 		}
@@ -231,9 +231,9 @@ void healing(bool withText) {
 		return;
 	}
 
-	if (hero.herbs > 0 && hero.HP < maxHP) {
-		hero.herbs --;
-		hero.HP += maxHP / 2 + hero.survival;
+	if (hero.potions > 0 && hero.HP < maxHP) {
+		hero.potions --;
+		hero.HP += POTION_BASE_HEAL + hero.survival * 2;
 		if (hero.HP > maxHP) hero.HP = maxHP;
 		if (withText) {
 			text_print_string_win(0, 3, "YOU FEEL BETTER");

@@ -105,6 +105,8 @@ extern void death_reset();
 
 #define POTION_BASE_COST 51
 
+#define POTION_BASE_HEAL 15
+
 extern bool alchimist_enabled;
 
 // ENEMIES

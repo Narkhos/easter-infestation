@@ -55,7 +55,7 @@ extern void drawBattlefield(unsigned int x, unsigned int y);
 extern void draw_battlefield(unsigned int x, unsigned int y, bool draw_enemies);
 
 extern UINT16 battle_gold_loot;
-extern bool battle_herb_loot;
+extern bool battle_potion_loot;
 
 extern UINT8 state_level_up();
 extern UINT8 state_battle_loose();

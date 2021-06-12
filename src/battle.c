@@ -171,7 +171,7 @@ void draw_battlefield(unsigned int x, unsigned int y, bool draw_enemies) {
 }
 
 UINT16 battle_gold_loot = 0;
-bool battle_herb_loot = 0;
+bool battle_potion_loot = 0;
 
 UINT8 state_level_up() {
 
@@ -236,7 +236,7 @@ UINT8 state_battle_win() {
 			text_print_string_win(4, 3, gold);
 		}
 
-		if (battle_herb_loot) {
+		if (battle_potion_loot) {
 			text_print_string_win(0, 4, "f: +1");
 		}
 
@@ -360,11 +360,11 @@ UINT8 assaultResolution(UINT8 action_type, UINT8 direction) {
 	// Victoire
 	if (countBlobs() == 0) {
 		// Une chance sur 4 de looter un soin
-		if (hero.herbs < 99 && (rand() & 3) <= 1) {
-			battle_herb_loot = true;
-			hero.herbs ++;
+		if (hero.potions < 99 && (rand() & 3) <= 1) {
+			battle_potion_loot = true;
+			hero.potions ++;
 		} else {
-			battle_herb_loot = false;
+			battle_potion_loot = false;
 		}
 		battle_gold_loot = rand() & 127;
 		hero.gold += battle_gold_loot;

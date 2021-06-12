@@ -66,7 +66,7 @@ UINT8 state_alchemist() {
 		case 0:
 			if (hero.gold >= cost) {
 				hero.gold -= cost;
-				hero.herbs += 1;
+				hero.potions += 1;
 				sound_OK();
 				alchimist_enabled = false;
 				level[Y_ALCHEMIST][X_ALCHEMIST] = MAP_WALL;
@@ -78,7 +78,7 @@ UINT8 state_alchemist() {
 		case 1:
 			if (hero.gold >= cost * 2) {
 				hero.gold -= cost * 2;
-				hero.herbs += 2;
+				hero.potions += 2;
 				sound_OK();
 				alchimist_enabled = false;
 				level[Y_ALCHEMIST][X_ALCHEMIST] = MAP_WALL;
@@ -90,7 +90,7 @@ UINT8 state_alchemist() {
 		case 2:
 			if (hero.gold >= cost * 3) {
 				hero.gold -= cost * 3;
-				hero.herbs += 3;
+				hero.potions += 3;
 				sound_OK();
 				alchimist_enabled = false;
 				level[Y_ALCHEMIST][X_ALCHEMIST] = MAP_WALL;

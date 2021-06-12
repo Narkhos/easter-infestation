@@ -60,7 +60,7 @@ void initHero(UINT8 job) {
 	hero.torch = true;
 	hero.job = job;
 	hero.keys = 0;
-	hero.herbs = 0;
+	hero.potions = 0;
 	hero.gold = 50;
 	hero.XP = 0;
 
@@ -82,7 +82,7 @@ void initHero(UINT8 job) {
 			hero.combat = 1;
 			hero.survival = 2;
 			hero.trade = 1;
-			hero.herbs = 2;
+			hero.potions = 2;
 		break;
 		case PRINCE:
 			hero.combat = 1;
@@ -164,9 +164,9 @@ void printHeroStats(unsigned int x, unsigned int y) {
 	text_print_string_bkg(x + 12, y + 8, "e");
 	text_print_string_bkg(x + 13, y + 8, itoa(hero.keys, str, 1));
 	
-	// Herbs
+	// potions
 	text_print_string_bkg(x + 14, y + 8, " f");
-	text_print_string_bkg(x + 16, y + 8, itoa(hero.herbs, str, 2));
+	text_print_string_bkg(x + 16, y + 8, itoa(hero.potions, str, 2));
 	
 	// Gold coins
 	text_print_string_bkg(x + 12, y + 9, "g");

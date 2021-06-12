@@ -23,7 +23,7 @@ typedef struct
 	UINT8 job;
 	INT16 HP;
 	UINT8 keys;
-	UINT8 herbs;
+	UINT8 potions;
 	UINT16 gold;
 	UINT16 XP;
 	

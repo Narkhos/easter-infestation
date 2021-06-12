@@ -412,7 +412,7 @@ DEF _keys 0xC1E9
 DEF _win_tilemap 0xC1EA
 DEF _y_buffer 0xC268
 DEF _battle_gold_loot 0xC26D
-DEF _battle_herb_loot 0xC26F
+DEF _battle_potion_loot 0xC26F
 DEF __cpu 0xC273
 DEF .mode 0xC274
 DEF .sys_time 0xC275

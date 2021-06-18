@@ -23,9 +23,9 @@ UINT8 state_title() {
 
 	text_print_string_win(0, 1, "CHOOSE YOUR CLASS");
 
-	text_print_string_win(1, 2, "WARRIOR c03 d01 b00");
+	text_print_string_win(1, 2, "KNIGHT  c03 d01 b00");
 	text_print_string_win(1, 3, "SCOUT   c01 d02 b01");
-	text_print_string_win(1, 4, "LORD    c01 d01 b02");
+	text_print_string_win(1, 4, "CROOK   c01 d01 b02");
 
 	selected = draw_menu();
 

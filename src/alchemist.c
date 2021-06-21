@@ -16,7 +16,11 @@ void draw_alchemist(unsigned int x, unsigned int y) {
 }
 
 UINT16 getPotionCost() {
-	return POTION_BASE_COST - hero.trade;
+	INT16 potionCost = POTION_BASE_COST - (hero.trade * TRADE_MULTIPLIER);
+
+	if (potionCost > 0 ) return potionCost;
+
+	return 0;
 }
 
 UINT8 state_alchemist_exit() {

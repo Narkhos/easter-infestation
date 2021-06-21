@@ -15,7 +15,11 @@ void draw_blacksmith(unsigned int x, unsigned int y) {
 }
 
 UINT16 getUpgradeCost() {
-	return UPGRADE_BASE_COST - hero.trade;
+	INT16 upgradeCost = UPGRADE_BASE_COST - (hero.trade * TRADE_MULTIPLIER);
+	
+	if (upgradeCost > 0) return upgradeCost;
+
+	return 0;
 }
 
 UINT8 state_blacksmith() {

@@ -15,7 +15,10 @@ void draw_inn(unsigned int x, unsigned int y) {
 }
 
 UINT16 getInnCost() {
-	return INN_BASE_COST - hero.trade;
+	INT16 innCost = INN_BASE_COST - (hero.trade * TRADE_MULTIPLIER);
+
+	if (innCost > 0) return innCost;
+	return 0;
 }
 
 UINT8 state_inn_exit() {

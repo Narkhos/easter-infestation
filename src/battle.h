@@ -33,6 +33,7 @@ typedef struct
 {
 	UINT8 LVL;
 	Blob blob[6]; // { far_left, far, far_right, near_left, near, near_right }
+	UINT16 XP; // XP earned when victorious 
 } Battlefield;
 
 extern const UINT8 blob_state_position[6][2];
@@ -40,7 +41,7 @@ extern const int blob_position[12][2];
 extern Battlefield battlefield;
 
 extern UINT8 countBlobs();
-extern void initBlob(UINT8 index, UINT8 level);
+extern bool initBlob(UINT8 index, UINT8 level);
 extern void initBattlefield(UINT8 level);
 extern void updateBattlefield();
 extern void drawBlobSide(UINT8 blob);

@@ -13,7 +13,7 @@
 
 #define BATTLE_XP 100
 
-#define XP_MAX 450
+#define XP_MAX 500
 
 typedef struct
 {

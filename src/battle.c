@@ -46,7 +46,7 @@ UINT8 countBlobs() {
 	return count;
 }
 
-void initBlob(UINT8 index, UINT8 level) {
+bool initBlob(UINT8 index, UINT8 level) {
 
 	battlefield.blob[index].LVL = level;
 	battlefield.blob[index].HP_MAX = battlefield.blob[index].LVL + 5;
@@ -63,15 +63,19 @@ void initBlob(UINT8 index, UINT8 level) {
 		battlefield.blob[index].state = ENEMY_STATE_IDLE;
 	}
 	
-	return;
+	return !(battlefield.blob[index].dead);
 }
 
 void initBattlefield(UINT8 level) {
+	UINT8 initialBlobCount = 0;
+
 	battlefield.LVL = level;
 
 	for(int i = 0; i<6; i++) {
-		initBlob(i, level);
+		if (initBlob(i, level)) initialBlobCount ++;
 	}
+
+	battlefield.XP = BATTLE_XP + (initialBlobCount * battlefield.LVL);
 }
 
 void updateBattlefield() {
@@ -222,7 +226,7 @@ UINT8 state_battle_win() {
 		text_print_string_win(0, 5, "THE END");
 	} else {
 		char xp[4];
-		itoa(BATTLE_XP, xp, 3);
+		itoa(battlefield.XP, xp, 3);
 		text_print_string_win(0, 1, "VICTORY!");
 
 		text_print_string_win(0, 2, "i: +");
@@ -248,7 +252,7 @@ UINT8 state_battle_win() {
 			
 			if (!game_victory) {
 				sound_OK();
-				UINT16 levelUp = increaseXP(BATTLE_XP);
+				UINT16 levelUp = increaseXP(battlefield.XP);
 				if (levelUp) {
 					return SCREEN_LEVEL_UP;
 				} else {

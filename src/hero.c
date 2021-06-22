@@ -5,18 +5,6 @@
 #include "text.h"
 #include "hero.h"
 
-#define GLADIATOR  0
-#define SCOUT 1
-#define PRINCE   2
-
-#define STAT_COMBAT  0
-#define STAT_SURVIVAL 1
-#define STAT_TRADE   2
-
-#define BATTLE_XP 100
-
-#define XP_MAX 450
-
 int starting_position[2] = {1, 2};
 int starting_direction = 0; // nord : 0, est : 1, sud : 2, ouest : 3
 
@@ -53,7 +41,7 @@ bool increaseXP(UINT16 gain) {
 	if (hero.XP > XP_MAX) {
 		return true; // level UP
 	}
-	return false; // Pas de level UP
+	return false; // No level UP
 }
 
 void initHero(UINT8 job) {

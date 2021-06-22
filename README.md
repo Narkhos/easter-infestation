@@ -16,11 +16,13 @@ https://github.com/gbdk-2020/gbdk-2020
 ## Generating graphics and font sources
 
 ```
+alchemist_tilegen.bat
 battlefield_tilegen.bat
 blacksmith_tilegen.bat
 boss_tilegen.bat
 dg_spritegen.bat
 dg_tilegen.bat
+font_tilegen.bat
 inn_tilegen.bat
 knight_tilegen.bat
 ```

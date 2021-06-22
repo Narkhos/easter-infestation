@@ -14,7 +14,7 @@ UINT8 getHeroLevel() {
 	return hero.combat + hero.survival + hero.trade;
 }
 
-UINT8 getHeroMaxHP() {
+UINT16 getHeroMaxHP() {
 	return getHeroLevel() * 10;
 }
 

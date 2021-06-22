@@ -48,7 +48,7 @@ extern Hero hero;
 
 extern UINT8 getHeroLevel();
 
-extern UINT8 getHeroMaxHP();
+extern UINT16 getHeroMaxHP();
 
 
 extern void increaseLevel(UINT8 stat);

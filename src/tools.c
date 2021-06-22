@@ -224,7 +224,7 @@ void healing(bool withText) {
 
 	if (hero.HP >= maxHP) {
 		if (withText) {
-			text_print_string_win(0, 3, "YOU FEEL GOOD");
+			text_print_string_win(0, 3, "YOU FEEL GOOD  ");
 		}
 		sound_KO();
 

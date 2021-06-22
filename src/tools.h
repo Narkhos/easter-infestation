@@ -100,13 +100,15 @@ extern void sound_KO();
 extern void death_reset();
 
 // ECONOMICS
-#define INN_BASE_COST 155
+#define INN_BASE_COST 154
 #define UPGRADE_BASE_COST 205
 
-#define POTION_BASE_COST 55
+#define POTION_BASE_COST 52
 
 #define POTION_BASE_HEAL 15
-#define TRADE_MULTIPLIER 5
+#define TRADE_MULTIPLIER_UPGRADE 5
+#define TRADE_MULTIPLIER_INN 4
+#define TRADE_MULTIPLIER_POTION 2
 
 extern bool alchimist_enabled;
 
